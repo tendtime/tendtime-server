@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   get '/project/test', to: 'projects#project_test', as: :project_test
 
+  namespace :admin do
+    root to: 'base#dashboard'
+    resources :suppliers, only: [:new, :index, :edit, :create, :update]
+  end
 end
