@@ -27,7 +27,8 @@
 
 :javascript
   $(function () {
-    $('.do-enquire').click(function() {
+    $('.do-enquire').click(function(e) {
+      e.preventDefault();
       var $trEl = $(this).closest('tr');
       var product = $trEl.data('product');
       var johnyMessages = [
