@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Suppliers</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suppliers.each do |supplier| %>
+      <tr>
+        <td><%= supplier.company_name %></td>
+        <td><%= supplier.contact_name %></td>
+        <td><%= link_to 'Edit', edit_admin_supplier_path(supplier) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supplier', new_admin_supplier_path %>
+

@@ -2,10 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.for_user(current_user)
   end
 
   # GET /products/1
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    #TODO: set supplier based on current_user
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -70,6 +71,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:unit, :price_per_unit, :title)
+      params.require(:product).permit(:unit, :price_per_unit, :title, :family, :brand)
     end
 end

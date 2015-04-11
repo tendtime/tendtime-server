@@ -1,29 +1,4 @@
-
-%h1= @matching_results.name
-%small= @matching_results.description
-/ %small= @totalprice
-- @matching_results.families.each do |family|
-  %tr
-    %th(colspan=5)= family.name
-  - family.types.each do |type|
-    %tr
-      %td(width="5px")
-      %td= type.name
-      %td= type.quantity
-      %td= type.price_per_unit
-      %td= type.quantity * type.price_per_unit
-
-%h4= @matching_results.revit_file_path
-= form_tag project_test_path, multipart: true do
-  = file_field_tag 'file'
-  = submit_tag 'upload'
-
-=image_tag 'pie.png'
-
-%div{ id: 'piechart' }
-
-:javascript
-  $(function () {
+$(function () {
       $('#piechart').highcharts({
           chart: {
               plotBackgroundColor: null,
