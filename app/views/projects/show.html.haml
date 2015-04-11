@@ -1,0 +1,14 @@
+%h1= @project.name
+%small= @project.description
+%small= @totalprice
+%table.table
+  %thead
+    %tr
+      %th Name
+      / %th Supplier Logo
+      %th Quantity
+      %th Product Description
+      %th Average Price
+      %th Price Variance
+  %tbody
+%h4= @project.revit_file_path

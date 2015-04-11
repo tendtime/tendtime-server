@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
                          allow_blank: true
 
   belongs_to :supplier
+  has_many :projects
 
   def admin?
     role == 'admin'
