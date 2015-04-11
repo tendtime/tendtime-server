@@ -2,25 +2,27 @@
 $green: #167190;
 $white: #fff;
 $red: #ed1d24;
+$semi-trans-black: rgba(0, 0, 0, 0.5);
+$grey-light: #eee;
+$black: #000;
 
 @import "normalize";
+
+// bootstrap variables
+$brand-primary: $green;
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "elements";
 
+@import "font-awesome";
+
 @import "modules/home-hero";
 @import "modules/login";
 @import "modules/projects";
 
-.footer {
-  background-color: $green;
-  color: $white;
-}
-
-.mailchimp {
-  input {
-    color: black;
-  }
-}
+@import "modules/marketing";
+@import "modules/tendtime-logo";
+@import "modules/site-navbar";
+@import "modules/app-body";

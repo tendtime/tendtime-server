@@ -1,0 +1,144 @@
+.marketing {
+  background: transparent image-url("home-bg.jpg") top center no-repeat;
+  background-size: 100%;
+  color: $green;
+
+  @media screen and (min-width: 750px) {
+    background-size: contain;
+  }
+
+  .header {
+    color: $white;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    min-height: 3em;
+    background-color: $green;
+
+    @media screen and (max-width: 740px) {
+      margin-top: 0;
+    }
+
+    .tendtime-logo {
+      color: $white;
+      background-color: $green;
+      font-size: 300%;
+      padding-top: 0.25em;
+      @media screen and (min-width: 760px) {
+        float: left;
+      }
+    }
+
+    .nav-bar {
+      margin: 0;
+      padding: 15px 10px 10px 10px;
+
+      .nav-list {
+        margin: 0;
+        padding: 0;
+
+        .nav-item {
+          float: left;
+          list-style: none;
+          padding: 1em;
+
+          .nav-link {
+            font-size: 120%;
+            color: $white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+  }
+
+  .call-to-action {
+    background-color: $semi-trans-black;
+    color: $white;
+    float: left;
+    padding: 3em;
+    max-width: 50%;
+    margin-bottom: 5em;
+
+    @media screen and (max-width: 750px) {
+      float: none;
+      max-width: 100%;
+    }
+
+    $grey-light: #ddd;
+    .tagline {
+      color: $grey-light;
+    }
+  }
+
+  .how-it-works {
+    background: white;
+    position: relative;
+    clear: both;
+    padding: 2em 1em;
+
+    .title {
+      margin: 1em 0;
+    }
+
+    .logo {
+      max-width: 100px;
+    }
+
+    .sub-title {
+      font-size: 180%;
+      padding-bottom: 3px;
+      border-bottom: 3px solid $green;
+      margin: 1em 0;
+    }
+  }
+
+  .testimonials {
+    padding: 2em 1em;
+    background: $grey-light;
+    position: relative;
+
+
+    .title {
+      margin: 1em 0;
+    }
+
+    .quote {
+      margin: 1em;
+
+      .quote-marks {
+        float: left;
+        display: block;
+
+      }
+      .name {
+        margin-left: 40px;
+        font-weight: bold;
+      }
+      .company {
+        margin-left: 40px;
+        font-size: 80%;
+      }
+      .text {
+        margin-left: 40px;
+        margin-top: 10px;
+        border-top: 2px solid $green;
+      }
+    }
+  }
+
+  .mailchimp {
+    background: $white;
+  }
+
+  .footer {
+    clear: both;
+    background: $grey-light;
+    .footer-content {
+      margin: 0 1em 1em 0;
+      .line {
+        margin: 0.5em;
+      }
+    }
+  }
+}

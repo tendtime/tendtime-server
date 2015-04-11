@@ -1,35 +1,117 @@
-<div class="home-hero">
-  <%= image_tag "logo-color.png", class: 'logo' %>
+<div class="container-fluid">
+  <div class="header row">
+    <div class="col-xs-12">
 
+      <h1 class="tendtime-logo">
+        <strong>tend</strong>time
+      </h1>
 
-<div class="jumbotron">
-  <h1>
-  Real-time quantity surveying for Architects
-  </h1>
+      <nav class="nav-bar">
+        <ul class="nav-list clearfix">
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">how it works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="<%= new_user_session_path %>">beta invite</a></li>
+          <li class="nav-item"><a class="nav-link" href="<%= new_user_session_path %>">log in</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
 </div>
 
-  <p class="lead">
-  Estimate the budget while you work
+<div class="call-to-action">
+  <h1 class="headline"><strong>Real</strong>-time quantity surveying for Architects</h1>
+  <p class="tagline">
+    Be the first to try our product by signing up to our mailing list.
+    <a href="#mailchimp" class="btn btn-primary">Free beta test</a>
   </p>
+</div>
 
-  <p class="lead">
-  Save six figure sums in rework costs
-  </p>
+<div id="how-it-works" class="how-it-works">
+  <h1 class="title">
+    How it works
+  </h1>
 
-  <p class="lead">
-  Simple. Easy. Smart.
-  </p>
+  <div class="fluid-container">
+    <div class="row">
+      <div class="col-xs-4">
 
-  <blockquote>
-    <p>
-      I’ve been using Revit for 9 years and I would find TendTime incredibly
-      useful –- potentially saving me countless hours per year.
-    </p>
-    <footer>Thomas Sheridan, Tennet + Brown Architects</footer>
-  </blockquote>
+        <h2 class="sub-title">
+          We integrate for you
+        </h2>
+        <p>
+        <%= image_tag 'revit-logo.png', class: 'logo' %>
 
+        <% image_tag 'archicad-logo.png', class: 'logo' %>
+        </p>
+      </div>
+      <div class="col-xs-4">
+        <h2 class="sub-title">Suppliers</h2>
+        <p>
+          Prices are gathered from a comprehensive database of suppliers.
+        </p>
+      </div>
+      <div class="col-xs-4">
+        <h2 class="sub-title">Simple interface</h2>
+        <p>
+          Receive estimates as you work, with one click. Sanity check your design.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id ="testimonials" class="testimonials">
+  <h1 class="title">
+    testimonials
+  </h1>
+
+  <div class="fluid-container">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="quote">
+          <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
+          <div class="name"> John Armstrong </div>
+          <div class="company">
+            Thomas Sheridan, Tennet + Brown Architects
+          </div>
+          <p class="text">
+            I've been using Revit for 9 years and I would find TendTime
+            incredibly useful - potentially saving me countless hours per year.
+          </p>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="quote">
+          <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
+          <div class="name"> John Armstrong </div>
+          <div class="company"> Armstrong &amp; Jones Architectural Design </div>
+          <p class="text">
+            Being able to get a sanity check on my designs in real time.
+            right now.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mailchimp" class="mailchimp clearfix">
+  <%= render "mailchimp" %>
 </div>
 
 <div class="footer">
-  <%= render "mailchimp" %>
+  <div class="footer-content pull-right">
+    <div class="line">follow us on</div>
+    <div class="line">
+      <a href="https://www.facebook.com/tendtimeapp" target="_blank"><%= fa_icon "facebook-square 2x" %></a>
+      <a href="https://twitter.com/tendtime" target="_blank"><%= fa_icon "twitter-square 2x" %></a>
+    </div>
+    <div class="line">copyright 2015</div>
+  </div>
 </div>
