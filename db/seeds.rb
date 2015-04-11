@@ -32,7 +32,7 @@ Product.create(
 
 Product.create(
   family: "Basic Roof",
-  title: "SG Metal panel roof",
+  title: "SG Metal Panels roof",
   unit: "m3"
 )
 
@@ -43,7 +43,7 @@ Product.create(
 )
 Product.create(
   family: "Basic Wall",
-  title: "Cavity waill sliders",
+  title: "Cavity wall_sliders",
   unit: "m3"
 )
 Product.create(
@@ -53,12 +53,14 @@ Product.create(
 )
 Product.create(
   family: "Basic Wall",
-  title: "Retaining - 300mm concrete",
+  title: "Retaining - 300mm Concrete",
   unit: "m3"
 )
 
 Product.create(
   family: "Curtain Wall",
-  title: "SH. Curtain Wall",
+  title: "SH_Curtain wall",
   unit: "m3"
 )
+
+Product.all.map{ |p| p.update price_per_unit: rand(100) }
