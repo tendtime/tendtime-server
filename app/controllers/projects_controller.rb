@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
     @project_requirements = @project.requirements.map do |family|
       family['types'].map do |requirement|
         requirement['product'] = Product.find_by(title: requirement['name'])
@@ -18,9 +17,8 @@ class ProjectsController < ApplicationController
       end
       family
     end
-
   end
-  
+
   def update
     @project = Project.find(params[:id])
     begin

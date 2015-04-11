@@ -2,16 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products
-  resources :projects, only: [:index, :show]
+  resources :projects
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
   root 'welcome#index'
-
-
-  resources :projects
 
   namespace :admin do
     root to: 'base#dashboard'

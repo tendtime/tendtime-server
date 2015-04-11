@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
 
-  def requirements=file
+  def requirements=(file)
     area_grouping =  ->(group, requirement){
       area = requirement[:area]
       r = /^\s*(\d+)/
@@ -17,7 +17,6 @@ class Project < ActiveRecord::Base
       'Basic Wall' => area_grouping,
       'Curtain Wall' => area_grouping
     }
-    
 
     xslx = Roo::Excelx.new(file.path)
 
@@ -40,8 +39,8 @@ class Project < ActiveRecord::Base
   end
 
   def requirements
-    JSON.parse(read_attribute(:requirements))
+    requirements = read_attribute(:requirements)
+    requirements ? JSON.parse(requirements) : []
   end
-
 
 end

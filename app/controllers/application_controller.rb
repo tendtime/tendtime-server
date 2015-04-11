@@ -6,7 +6,7 @@ protected
     return products_path if current_user.supplier?
     return projects_path if current_user.architect?
     return admin_root_path if current_user.admin?
-    project_test_path
+    projects_path
   end
 
 end
