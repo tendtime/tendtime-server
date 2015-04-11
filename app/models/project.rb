@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-
+  belongs_to :user
 
   def requirements=file
     area_grouping =  ->(group, requirement){
@@ -42,5 +42,6 @@ class Project < ActiveRecord::Base
   def requirements
     JSON.parse(read_attribute(:requirements))
   end
+
 
 end
