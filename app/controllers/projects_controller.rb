@@ -8,25 +8,30 @@ require 'ostruct'
   end
 
   def show
-    @project = current_user.projects.find(params[:id])
-  end
-
-  def project_test
-
-  	@project = OpenStruct.new({
-  		products:[
-  			OpenStruct.new({name: 'Toilets', quantity: 50, description: 'White toilets', average_price:45, price_variance: 10}),
-  			OpenStruct.new({name: 'Doors', quantity: 40, description: 'Extra doory doors', average_price:15, price_variance: 10}),
-  			OpenStruct.new({name: 'Tables', quantity: 20, description: 'Tables that can hold things', average_price:30, price_variance: 10})
-  		],
-  		name: 'Project X',
-  		description: 'A project for this A client cnad this B Model',
-  		revit_file_path: 'c:/user/documents/project_X/3Dmodel/2015-04-12-V1' 
-  	})
-    @chart_data = chart_data(@project.products)
+    if params[:id] == 'test'
+      project_test
+      render 'project_test'
+    else
+      @project = current_user.projects.find(params[:id])
+    end
   end
 
   private
+
+  def project_test
+
+    @project = OpenStruct.new({
+      products:[
+        OpenStruct.new({name: 'Toilets', quantity: 50, description: 'White toilets', average_price:45, price_variance: 10}),
+        OpenStruct.new({name: 'Doors', quantity: 40, description: 'Extra doory doors', average_price:15, price_variance: 10}),
+        OpenStruct.new({name: 'Tables', quantity: 20, description: 'Tables that can hold things', average_price:30, price_variance: 10})
+      ],
+      name: 'Project X',
+      description: 'A project for this A client cnad this B Model',
+      revit_file_path: 'c:/user/documents/project_X/3Dmodel/2015-04-12-V1' 
+    })
+    @chart_data = chart_data(@project.products)
+  end
 
   def chart_data(products)
     total = total_price(products)

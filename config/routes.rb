@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/project/test', to: 'projects#project_test', as: :project_test
-
   namespace :admin do
     root to: 'base#dashboard'
     resources :suppliers, only: [:new, :index, :edit, :create, :update]
