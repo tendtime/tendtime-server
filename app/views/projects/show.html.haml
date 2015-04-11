@@ -19,9 +19,8 @@
   = file_field_tag 'project[requirements]'
   = submit_tag 'upload'
 
-=image_tag 'pie.png'
-
-%div{ id: 'piechart' }
+- if @project_requirements.any?
+  %div{ id: 'piechart' }
 
 :javascript
   $(function () {
