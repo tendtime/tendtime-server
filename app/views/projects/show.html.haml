@@ -3,7 +3,7 @@
 %small= @project.description
 %small TODO: compute @totalprice
 %table.table
-  - @project.requirements.each do |family|
+  - @project_requirements.each do |family|
     %tr
       %th(colspan=5)= family['name']
     - family['types'].each do |type|
@@ -11,8 +11,8 @@
         %td(width="5px")
         %td= type['name']
         %td= type['quantity']
-        %td type[:price_per_unit]
-        %td type[:quantity] * type[:price_per_unit]
+        %td= type['product'].price_per_unit
+        %td= type['quantity'].to_i * type['product'].price_per_unit
 
 = form_tag project_path(@project), method: :patch, multipart: true do
   = file_field_tag 'project[requirements]'

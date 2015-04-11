@@ -11,6 +11,14 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
+    @project_requirements = @project.requirements.map do |family|
+      family['types'].map do |requirement|
+        requirement['product'] = Product.find_by(title: requirement['name'])
+        requirement
+      end
+      family
+    end
+
   end
   
   def update
@@ -22,6 +30,8 @@ class ProjectsController < ApplicationController
     end
 
     redirect_to project_path(@project)
+
+  end
 
   private
 
