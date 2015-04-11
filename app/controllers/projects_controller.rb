@@ -1,21 +1,34 @@
 require 'ostruct'
- class ProjectsController < ApplicationController
+
+class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
 
-  def project_test
+  def index
+    @projects = current_user.projects
+  end
 
-  	@project = OpenStruct.new({
-  		products:[
-  			OpenStruct.new({name: 'Toilets', quantity: 50, description: 'White toilets', average_price:45, price_variance: 10}),
-  			OpenStruct.new({name: 'Doors', quantity: 40, description: 'Extra doory doors', average_price:15, price_variance: 10}),
-  			OpenStruct.new({name: 'Tables', quantity: 20, description: 'Tables that can hold things', average_price:30, price_variance: 10})
-  		],
-  		name: 'Project X',
-  		description: 'A project for this A client cnad this B Model',
-  		revit_file_path: 'c:/user/documents/project_X/3Dmodel/2015-04-12-V1' 
-  	})
-    @chart_data = chart_data(@project.products)
+  def show
+    @project = Project.find(params[:id])
+    @project_requirements = @project.requirements.map do |family|
+      family['types'].map do |requirement|
+        requirement['product'] = Product.find_by(title: requirement['name'])
+        requirement
+      end
+      family
+    end
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    begin
+      @project.update(params.require(:project).permit(:requirements))
+    rescue ActionController::ParameterMissing
+      return redirect_to project_path(@project)
+    end
+
+    redirect_to project_path(@project)
+
   end
 
   private

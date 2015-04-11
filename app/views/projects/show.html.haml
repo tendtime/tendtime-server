@@ -1,0 +1,74 @@
+
+%h1= @project.name
+%small= @project.description
+/ %small TODO: compute @totalprice
+%table.table
+  - @project_requirements.each do |family|
+    %tr
+      %th(colspan=7)= family['name']
+    - family['types'].each do |type|
+      %tr{data: {product: type.to_json}}
+        %td(width="5px")
+        %td= type['name']
+        %td= type['quantity']
+        %td= type['product'].price_per_unit
+        %td= number_with_precision((type['quantity'].to_i * type['product'].price_per_unit), precision: 2)
+        %td= time_ago_in_words type['product'].updated_at
+        %td
+          %a.btn.btn-sm.btn-primary.do-enquire
+            %i.glyphicon.glyphicon-shopping-cart
+
+= form_tag project_path(@project), method: :patch, multipart: true do
+  = file_field_tag 'project[requirements]'
+  = submit_tag 'upload'
+
+- if @project_requirements.any?
+  %div{ id: 'piechart' }
+
+:javascript
+  $(function () {
+    $('.do-enquire').click(function() {
+      var $trEl = $(this).closest('tr');
+      var product = $trEl.data('product');
+      var johnyMessages = [
+        "Design is a word that's come to mean so much that it's also a word that has come to mean nothing.",
+        "It’s very easy to be different, but very difficult to be better.",
+        "Very often design is the most immediate way of defining what products become in people's minds."
+        ]
+      var message = "Johny said: " + johnyMessages[Math.floor(Math.random() * johnyMessages.length)] + "\n\nYou are going buy the best " + product.name + " ever made!\n\nThank you ! We love you"
+      $trEl.addClass('success');
+      $(this).addClass('disabled');
+      alert(message);
+    })
+      $('#piechart').highcharts({
+          chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false
+          },
+          title: {
+              text: 'Truly Fascinating Chart'
+          },
+          tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                      style: {
+                          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                      }
+                  }
+              }
+          },
+          series: [{
+              type: 'pie',
+              name: 'Product',
+              data: #{ @chart_data.to_json }
+          }]
+      });
+  });
