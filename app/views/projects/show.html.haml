@@ -12,7 +12,7 @@
         %td= type['name']
         %td= type['quantity']
         %td= type['product'].price_per_unit
-        %td= type['quantity'].to_i * type['product'].price_per_unit
+        %td= number_with_precision((type['quantity'].to_i * type['product'].price_per_unit), precision: 2)
         %td= time_ago_in_words type['product'].updated_at
 
 = form_tag project_path(@project), method: :patch, multipart: true do
