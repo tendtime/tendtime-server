@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_inclusion_of :role, in: %w( admin architect supplier )
+  validates_inclusion_of :role,
+                         in: %w(admin architect supplier),
+                         allow_blank: true
 
   def admin?
     role == 'admin'
