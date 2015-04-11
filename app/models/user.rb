@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
                          in: %w(admin architect supplier),
                          allow_blank: true
 
+  belongs_to :supplier
+
   def admin?
     role == 'admin'
   end
