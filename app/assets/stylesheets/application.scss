@@ -1,11 +1,8 @@
+@import "normalize";
+
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "elements";
 
-
-// bare elements
-
-body {
-  max-width: 800px;
-  margin: 1em auto;
-}
+@import "modules/home-hero";
