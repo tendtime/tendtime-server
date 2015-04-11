@@ -1,7 +1,12 @@
 
 %h1= @project.name
-%small= @project.description
-%small TODO: compute @totalprice
+%div
+  %span.pull-left
+    %span.sub-heading= @project.description
+  %span.pull-right
+    %span.total
+      Total Project Cost:
+      ="$#{@total_price}"
 %table.table
   - @project_requirements.each do |family|
     %tr
@@ -31,7 +36,7 @@
               plotShadow: false
           },
           title: {
-              text: 'Truly Fascinating Chart'
+              text: 'Price Breakdown'
           },
           tooltip: {
               pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

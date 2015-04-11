@@ -10,9 +10,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @chart_data = []
+    @total_price = total_price(@project.requirements)
     @project_requirements = @project.requirements.map do |family|
       family['types'].map do |requirement|
         requirement['product'] = Product.find_by(title: requirement['name'])
+        total_produce_cost = requirement['product'].price_per_unit * requirement['quantity'].to_f
+        @chart_data << [requirement['product'].title,  ((total_produce_cost/@total_price)*100.0)]
         requirement
       end
       family
@@ -42,10 +46,14 @@ class ProjectsController < ApplicationController
     data
   end
 
-  def total_price(products)
+  def total_price(requirements)
     total = 0
-    products.each do |p|
-      total += p.average_price
+    requirements.each do |family|
+      family['types'].map do |requirement|
+
+        product= Product.find_by(title: requirement['name'])
+        total += product.price_per_unit * requirement['quantity'].to_f
+      end
     end
     total
   end

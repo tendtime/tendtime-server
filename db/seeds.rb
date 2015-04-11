@@ -23,7 +23,7 @@ Product.create(
   title: "64 x 128 rectangular",
   unit: "mm",
   supplier: metro,
-  price_per_unit: 10.50
+  price_per_unit: 0.01
 )
 
 Product.create(
