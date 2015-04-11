@@ -28,13 +28,16 @@
 :javascript
   $(function () {
     $('.do-enquire').click(function() {
-      var product = $(this).closest('tr').data('product');
+      var $trEl = $(this).closest('tr');
+      var product = $trEl.data('product');
       var johnyMessages = [
         "Design is a word that's come to mean so much that it's also a word that has come to mean nothing.",
         "It’s very easy to be different, but very difficult to be better.",
         "Very often design is the most immediate way of defining what products become in people's minds."
         ]
       var message = "Johny said: " + johnyMessages[Math.floor(Math.random() * johnyMessages.length)] + "\n\nYou are going buy the best " + product.name + " ever made!\n\nThank you ! We love you"
+      $trEl.addClass('success');
+      $(this).addClass('disabled');
       alert(message);
     })
       $('#piechart').highcharts({
