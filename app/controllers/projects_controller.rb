@@ -7,20 +7,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
-    
   end
   
 
-  def upload_file
+  def update
+    @project = Project.find(params[:id])
+    @project.update(params.require(:project).permit(:requirements))
 
-    @project = Project.find(params[:id]).update_from_file params[:file]
-
-
-    redirect_to action: :show
-
+    redirect_to project_path(@project)
   end
-
-
-
 end

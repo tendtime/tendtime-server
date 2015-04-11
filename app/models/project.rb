@@ -1,8 +1,7 @@
 class Project < ActiveRecord::Base
 
 
-  def update_from_file(params)
-
+  def requirements=file
     area_grouping =  ->(group, requirement){
       area = requirement[:area]
       r = /^\s*(\d+)/
@@ -20,28 +19,28 @@ class Project < ActiveRecord::Base
     }
     
 
-    @xslx = Roo::Excelx.new(params[:file].path)
+    xslx = Roo::Excelx.new(file.path)
 
-    requirements = @xslx.sheets[0..3].map do |sheet_name|
-      sheet = @xslx.sheet(sheet_name)
+    requirements = xslx.sheets[0..3].map do |sheet_name|
+      sheet = xslx.sheet(sheet_name)
       sheet_requirements = sheet.parse(sheet.row(2).reduce({}){|hsh,v| hsh[v.parameterize.underscore.to_sym] = v; hsh})
       sheet_requirements = sheet_requirements.slice(2..-1)
 
     end.flatten.reduce({}) do |hsh, requirement|
       hsh[requirement[:family]] ||= { name: requirement[:family], types: {} }
-      hsh[requirement[:family]][:types][requirement[:type]] ||= { name: requirement[:type], quantity: 0, price_per_unit: 1 }
+      hsh[requirement[:family]][:types][requirement[:type]] ||= { name: requirement[:type], quantity: 0 }
 
       hsh[requirement[:family]][:types][requirement[:type]] = family_group[requirement[:family]].call(hsh[requirement[:family]][:types][requirement[:type]], requirement)
 
       hsh
-    end.values
+    end.values.map{|f| f[:types] = f[:types].values; f}
 
-    raise
+      update_column :requirements, requirements.to_json
 
-    
   end
 
-
-
+  def requirements
+    JSON.parse(read_attribute(:requirements))
+  end
 
 end

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  match '/project/test', to: 'projects#project_test', as: :project_test, via: [:get, :post]
+  resources :projects
+
+  # match '/project/test', to: 'projects#project_test', as: :project_test, via: [:get, :post]
 
   namespace :admin do
     root to: 'base#dashboard'

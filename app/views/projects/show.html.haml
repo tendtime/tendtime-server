@@ -1,22 +1,21 @@
 
 %h1= @project.name
 %small= @project.description
-/ %small= @totalprice
+%small TODO: compute @totalprice
 %table.table
-  - @project.families.each do |family|
+  - @project.requirements.each do |family|
     %tr
-      %th(colspan=5)= family.name
-    - family.types.each do |type|
+      %th(colspan=5)= family['name']
+    - family['types'].each do |type|
       %tr
         %td(width="5px")
-        %td= type.name
-        %td= type.quantity
-        %td= type.price_per_unit
-        %td= type.quantity * type.price_per_unit
+        %td= type['name']
+        %td= type['quantity']
+        %td type[:price_per_unit]
+        %td type[:quantity] * type[:price_per_unit]
 
-%h4= @project.revit_file_path
-= form_tag project_test_path, multipart: true do
-  = file_field_tag 'file'
+= form_tag project_path(@project), method: :patch, multipart: true do
+  = file_field_tag 'project[requirements]'
   = submit_tag 'upload'
 
 =image_tag 'pie.png'
