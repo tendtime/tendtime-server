@@ -213,7 +213,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.4)
   byebug
-  coffee-rails (~> 4.1.0)
   devise
   haml-rails
   highcharts-rails
