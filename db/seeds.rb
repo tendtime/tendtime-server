@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'barretalexandre@hotmail.com', password: '12341234' )
-
-puts "nombre de user dans la DB: #{User.count}"
+User.create(email: 'tom.robinson@tendtime.co', password: 'password1', role: 'admin')
+User.create(email: 'adam@nzarchitects.co.nz', password: 'password1', role: 'architect')
+User.create(email: 'steve.wilson@roofingsolutions.co.nz', password: 'password1', role: 'supplier')
+#TODO :link steve to a supplier
 
 
 
