@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
 
     if params[:file]
       @xslx = Roo::Excelx.new(params[:file].path)
-      requirements = @xslx.sheets[3..6].map do |sheet_name|
+      requirements = @xslx.sheets[0..3].map do |sheet_name|
         sheet = @xslx.sheet(sheet_name)
         sheet_requirements = sheet.parse(sheet.row(2).reduce({}){|hsh,v| hsh[v.parameterize.underscore.to_sym] = v; hsh})
         sheet_requirements = sheet_requirements.slice(2..-1)
