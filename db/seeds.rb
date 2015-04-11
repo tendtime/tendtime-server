@@ -11,6 +11,7 @@ User.create(email: 'barretalexandre@hotmail.com', password: '12341234' )
 puts "nombre de user dans la DB: #{User.count}"
 
 
+
 Project.create(name: 'Proejct X', description: 'A project for client A for Building B')
 
 Supplier.create(company_name: 'Mitre 10', contact_name: 'Jane Doe')

@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  # match '/project/test', to: 'projects#project_test', as: :project_test, via: [:get, :post]
-
   namespace :admin do
     root to: 'base#dashboard'
     resources :suppliers, only: [:new, :index, :edit, :create, :update]

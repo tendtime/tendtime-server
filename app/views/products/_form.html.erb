@@ -11,30 +11,30 @@
     </div>
   <% end %>
 
-  <%= f.label :family, 'Family' %>:
-  <%= f.text_field :family %>
+  <div class="form-group">
+    <%= f.label :family, 'Family' %>:
+    <%= f.text_field :family, class: "form-control", style: "width:50%;"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, 'Title' %>:
+    <%= f.text_field :title, class: "form-control", style: "width:50%;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :brand, 'Brand' %>:
+    <%= f.text_field :brand, class: "form-control", style: "width:50%;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit, 'Unit' %>:
+    <%= f.text_field :unit, class: "form-control", style: "width:50%;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price_per_unit, 'Price per unit' %>:
+    <%= f.text_field :price_per_unit, class: "form-control", style: "width:50%;" %>
+  </div>
 
-  <br />
-
-  <%= f.label :title, 'Title' %>:
-  <%= f.text_field :title %>
-
-  <br />
-
-  <%= f.label :brand, 'Brand' %>:
-  <%= f.text_field :brand %>
-
-  <br />
-
-  <%= f.label :unit, 'unit' %>:
-  <%= f.text_field :unit %>
-
-  <br />
-
-  <%= f.label :price_per_unit, 'price_per_unit' %>:
-  <%= f.text_field :price_per_unit %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
+    <br>
   </div>
 <% end %>
