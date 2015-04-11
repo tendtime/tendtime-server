@@ -1,0 +1,20 @@
+%h1= @project.name
+%small= @project.description
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Quantity
+      %th Price per unit
+      %th Total
+  %tbody
+    - @project.products.each do |product|
+      %tr 
+        %td= product.name
+        %td= product.quantity
+        %td= product.price_per_unit
+        %td= product.quantity * product.price_per_unit
+%h4= @project.revit_file_path
+
+One graph 
+
