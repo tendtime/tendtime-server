@@ -27,7 +27,8 @@
 
 :javascript
   $(function () {
-    $('.do-enquire').click(function() {
+    $('.do-enquire').click(function(e) {
+      e.preventDefault();
       var $trEl = $(this).closest('tr');
       var product = $trEl.data('product');
       var johnyMessages = [
@@ -35,10 +36,12 @@
         "It’s very easy to be different, but very difficult to be better.",
         "Very often design is the most immediate way of defining what products become in people's minds."
         ]
-      var message = "Johny said: " + johnyMessages[Math.floor(Math.random() * johnyMessages.length)] + "\n\nYou are going buy the best " + product.name + " ever made!\n\nThank you ! We love you"
+      var message = "<p>Johny said: " + johnyMessages[Math.floor(Math.random() * johnyMessages.length)] + "</p>" +
+        "<p>You are going buy the best " + product.name + " ever made!</p>" +
+        "<p>Thank you ! We love you</p>"
       $trEl.addClass('success');
       $(this).addClass('disabled');
-      alert(message);
+      bootbox.alert(message);
     })
       $('#piechart').highcharts({
           chart: {

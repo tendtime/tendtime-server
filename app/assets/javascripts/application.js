@@ -14,4 +14,4 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require highcharts
-//= require_tree .
+//= require bootbox.min
