@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tend Time - Real-time quantity surveying for Architects</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/head' %>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="site-navbar navbar navbar-default">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root_path %>">
-      <%= image_tag 'logo-small-color.png' %>
-    </a>
+    <div class="app-body">
 
-    <div class="pull-right">
-      <% if user_signed_in? %>
-        Logged in as <%= current_user.email %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary') %>
-      <% else %>
-        <%= link_to('Login', new_user_session_path, class: 'btn btn-primary')  %>
-        <%= link_to('Sign up', new_user_registration_path, class: 'btn btn-primary')  %>
-      <% end %>
+      <a class="navbar-brand" href="<%= root_path %>">
+        <h1 class="tendtime-logo">
+          <strong>tend</strong>time
+        </h1>
+      </a>
+
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          <span class="login-message">
+          Logged in as <%= current_user.email %>
+          </span>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary') %>
+        <% else %>
+          <%= link_to('Login', new_user_session_path, class: 'btn btn-primary')  %>
+        <% end %>
+      </div>
     </div>
   </div><!-- /.container-fluid -->
 </nav>
 
-<%= yield %>
+<div class="app-body">
+  <%= yield %>
+</div>
 
 </body>
 </html>
