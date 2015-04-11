@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  get '/project/test', to: 'projects#project_test', as: :project_test
+  match '/project/test', to: 'projects#project_test', as: :project_test, via: [:get, :post]
 
 end
