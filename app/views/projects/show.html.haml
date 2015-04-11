@@ -5,7 +5,7 @@
 %table.table
   - @project_requirements.each do |family|
     %tr
-      %th(colspan=5)= family['name']
+      %th(colspan=6)= family['name']
     - family['types'].each do |type|
       %tr
         %td(width="5px")
@@ -13,6 +13,7 @@
         %td= type['quantity']
         %td= type['product'].price_per_unit
         %td= type['quantity'].to_i * type['product'].price_per_unit
+        %td= time_ago_in_words type['product'].updated_at
 
 = form_tag project_path(@project), method: :patch, multipart: true do
   = file_field_tag 'project[requirements]'
