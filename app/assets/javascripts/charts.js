@@ -1,30 +1,4 @@
-%h1= @project.name
-%small= @project.description
-%small= @totalprice
-%table.table
-  %thead
-    %tr
-      %th Name
-      / %th Supplier Logo
-      %th Quantity
-      %th Product Description
-      %th Average Price
-      %th Price Variance
-  %tbody
-    - @project.products.each do |product|
-      %tr
-        %td= product.name
-        / %td= product.supplier_logo
-        %td= product.quantity
-        %td= product.description
-        %td= product.average_price
-        %td= product.price_variance
-%h4= @project.revit_file_path
-
-%div{ id: 'piechart' }
-
-:javascript
-  $(function () {
+$(function () {
       $('#piechart').highcharts({
           chart: {
               plotBackgroundColor: null,
