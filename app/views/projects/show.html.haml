@@ -1,14 +1,58 @@
+
 %h1= @project.name
 %small= @project.description
-%small= @totalprice
+%small TODO: compute @totalprice
 %table.table
-  %thead
+  - @project.requirements.each do |family|
     %tr
-      %th Name
-      / %th Supplier Logo
-      %th Quantity
-      %th Product Description
-      %th Average Price
-      %th Price Variance
-  %tbody
-%h4= @project.revit_file_path
+      %th(colspan=5)= family['name']
+    - family['types'].each do |type|
+      %tr
+        %td(width="5px")
+        %td= type['name']
+        %td= type['quantity']
+        %td type[:price_per_unit]
+        %td type[:quantity] * type[:price_per_unit]
+
+= form_tag project_path(@project), method: :patch, multipart: true do
+  = file_field_tag 'project[requirements]'
+  = submit_tag 'upload'
+
+=image_tag 'pie.png'
+
+%div{ id: 'piechart' }
+
+:javascript
+  $(function () {
+      $('#piechart').highcharts({
+          chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false
+          },
+          title: {
+              text: 'Truly Fascinating Chart'
+          },
+          tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                      style: {
+                          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                      }
+                  }
+              }
+          },
+          series: [{
+              type: 'pie',
+              name: 'Product',
+              data: #{ @chart_data.to_json }
+          }]
+      });
+  });

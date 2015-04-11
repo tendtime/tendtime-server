@@ -30,10 +30,21 @@ ActiveRecord::Schema.define(version: 20150411081845) do
   add_index "products", ["supplier_id"], name: "index_products_on_supplier_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string  "name"
-    t.string  "description"
-    t.string  "revit_file_path"
-    t.integer "user_id"
+    t.text     "requirements"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "revit_file_path"
+    t.integer  "user_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.string   "type"
+    t.string   "family"
+    t.string   "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "suppliers", force: :cascade do |t|

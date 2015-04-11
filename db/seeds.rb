@@ -13,6 +13,9 @@ User.create(email: 'steve.wilson@roofingsolutions.co.nz', password: 'password1',
 #TODO :link steve to a supplier
 
 
+
+Project.create(name: 'Proejct X', description: 'A project for client A for Building B')
+
 Supplier.create(company_name: 'Mitre 10', contact_name: 'Jane Doe')
 
 Product.create(

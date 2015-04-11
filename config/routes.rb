@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+
+  resources :projects
+
   namespace :admin do
     root to: 'base#dashboard'
     resources :suppliers, only: [:new, :index, :edit, :create, :update]

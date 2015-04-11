@@ -4,15 +4,14 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    @projects = current_user.projects
-  end
 
   def show
     @project = Project.find(params[:id])
 
   end
   
+
+
   def update
     @project = Project.find(params[:id])
     begin
@@ -22,6 +21,7 @@ class ProjectsController < ApplicationController
     end
 
     redirect_to project_path(@project)
+  end
 
   private
 
