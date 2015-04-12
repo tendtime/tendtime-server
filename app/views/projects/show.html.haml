@@ -40,7 +40,7 @@
       %th Quantity
       %th Price per unit
       %th Total cost
-      %th Price updated
+      %th
       %th
     - @project_requirements.each do |family|
       %tr
@@ -50,7 +50,10 @@
           %td(width="5px")
           %td= type['name']
           %td= type['quantity']
-          %td= number_to_currency(type['product'].price_per_unit)
+          %td
+            = number_to_currency(type['product'].price_per_unit)
+            %br
+            %small.text-muted updated <span data-livestamp="#{type['product'].updated_at.to_i}"></span>
           %td= number_to_currency((type['quantity'].to_i * type['product'].price_per_unit))
           %td
             = time_ago_in_words type['product'].updated_at
