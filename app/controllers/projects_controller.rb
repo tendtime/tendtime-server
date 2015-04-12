@@ -8,6 +8,22 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
+  def new
+    @project = Project.new
+  end
+
+  def create
+    @project = Project.new(project_params)
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Product was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+
   def show
     @project = Project.find(params[:id])
     @chart_data = []
@@ -56,6 +72,12 @@ class ProjectsController < ApplicationController
       end
     end
     total
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :description, :budget)
   end
 
 end
