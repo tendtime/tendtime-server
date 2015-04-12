@@ -43,7 +43,7 @@
       %th
     - @project_requirements.each do |family|
       %tr
-        %th(colspan=6)= family['name']
+        %th.striped(colspan=6)= family['name']
       - family['types'].each do |type|
         %tr{data: {product: type.to_json}}
           %td(width="5px")
