@@ -83,3 +83,4 @@ production:
   database: tendtime-server_production
   username: tendtime-server
   password: <%= ENV['TENDTIME-SERVER_DATABASE_PASSWORD'] %>
+
