@@ -1,0 +1,31 @@
+- if notice
+  .alert.alert-success{:role => "alert"}
+    = notice
+%h1
+  .pull-right
+    = link_to new_product_path, class: 'btn btn-primary' do
+      %i.fa.fa-plus-circle
+      New Product
+  My Products
+%table.table.table-striped
+  %thead
+    %tr
+      %th Family
+      %th Brand
+      %th Title
+      %th
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.family
+        %td= product.brand
+        %td= product.title
+        %td.text-right
+          = link_to edit_product_path(product), class: 'btn btn-xs btn-info' do
+            %i.fa.fa-edit
+            edit
+          &nbsp;&nbsp;
+          = link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' do
+            %i.fa.fa-remove
+            delete
+%br
