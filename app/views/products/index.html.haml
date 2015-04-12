@@ -24,6 +24,7 @@
           = link_to edit_product_path(product), class: 'btn btn-xs btn-info' do
             %i.fa.fa-edit
             edit
+          &nbsp;&nbsp;
           = link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' do
             %i.fa.fa-remove
             delete
