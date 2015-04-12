@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <%= f.label :company_name, 'Company Name' %>:
-  <%= f.text_field :company_name %>
+  <div class="form-group">
+    <%= f.label :company_name, 'Company Name' %>:
+    <%= f.text_field :company_name %>
+  </div>
 
-  <br />
-
-  <%= f.label :contact_name, 'Contact Name' %>:
-  <%= f.text_field :contact_name %>
+  <div class="form-group">
+    <%= f.label :contact_name, 'Contact Name' %>:
+    <%= f.text_field :contact_name %>
+  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
