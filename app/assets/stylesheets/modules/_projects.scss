@@ -1,8 +1,21 @@
-.sub-heading {
-  font-style: italic;
+.sub-heading { font-style: italic; }
+.page-heading { 
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .total {
   font-size: 18px;
   color: #337ab7;
+}
+
+#file {
+  display: none;
+}
+#file-name {
+  margin-left: 10px;
+}
+
+.wrap {
+  height: 50px;
 }

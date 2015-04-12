@@ -24,14 +24,35 @@
             %i.glyphicon.glyphicon-shopping-cart
 
 = form_tag project_path(@project), method: :patch, multipart: true do
-  = file_field_tag 'project[requirements]'
-  = submit_tag 'upload'
+  %span.page-heading Import Schedule File:
+  %br
+  %div.wrap
+    %button#file.btn.btn-primary(type="button") Choose File
+    %span#file-name No file chosen
+    = file_field_tag 'project[requirements]'
 
 - if @project_requirements.any?
   %div{ id: 'piechart' }
 
 :javascript
   $(function () {
+    var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
+    var fileInput = $(':file').wrap(wrapper);
+
+    fileInput.change(function(){
+        $this = $(this);
+        $('#file-name').text($this.val());
+        $('#file').text('Upload file');
+        $('#file').prop('type', 'submit');
+        $this.parent().remove();
+
+    })
+
+    $('#file').click(function(){
+        $(':file').click();
+    }).show();
+
+
     $('.do-enquire').click(function(e) {
       e.preventDefault();
       var $trEl = $(this).closest('tr');
