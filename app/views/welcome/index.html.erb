@@ -6,12 +6,12 @@
         <strong>tend</strong>time
       </h1>
 
-      <nav class="nav-bar">
+      <nav class="nav-bar pull-right">
         <ul class="nav-list clearfix">
           <li class="nav-item"><a class="nav-link" href="#how-it-works">how it works</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="#pricing">pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="<%= new_user_session_path %>">beta invite</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mailchimp">join the beta</a></li>
           <li class="nav-item"><a class="nav-link" href="<%= new_user_session_path %>">log in</a></li>
         </ul>
       </nav>
@@ -23,85 +23,82 @@
 <div class="call-to-action">
   <h1 class="headline"><strong>Real</strong>-time quantity surveying for Architects</h1>
   <p class="tagline">
-    Be the first to try our product by signing up to our mailing list.
+    Be the first to try our product by signing up to our free beta.
   </p>
   <a href="#mailchimp" class="btn btn-primary">Free beta test</a>
 </div>
 
-<div id="how-it-works" class="how-it-works">
-  <h1 class="title">
-    How it works
-  </h1>
+<div class="white-wrapper">
+  <div id="how-it-works" class="how-it-works">
+    <h1 class="title">
+      How it works
+    </h1>
 
-  <div class="fluid-container">
-    <div class="row">
-      <div class="col-xs-4">
+    <div class="fluid-container">
+      <div class="row">
+        <div class="col-md-4">
 
-        <h2 class="sub-title">
-          We integrate for you
-        </h2>
-        <p>
-        <%= image_tag 'revit-logo.png', class: 'logo' %>
-
-        <% image_tag 'archicad-logo.png', class: 'logo' %>
-        </p>
-      </div>
-      <div class="col-xs-4">
-        <h2 class="sub-title">Suppliers</h2>
-        <p>
-          Prices are gathered from a comprehensive database of suppliers.
-        </p>
-      </div>
-      <div class="col-xs-4">
-        <h2 class="sub-title">Simple interface</h2>
-        <p>
-          Receive estimates as you work, with one click. Sanity check your design.
-        </p>
+          <h2 class="sub-title">
+            We integrate for you
+          </h2>
+          <%= image_tag 'revit-logo.png', class: 'logo' %>
+        </div>
+        <div class="col-md-4">
+          <h2 class="sub-title">Suppliers</h2>
+          <p>
+            Prices are gathered from a comprehensive database of suppliers.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h2 class="sub-title">Simple interface</h2>
+          <p>
+            Receive estimates as you work, with one click. Sanity check your design.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div id ="testimonials" class="testimonials">
-  <h1 class="title">
-    testimonials
-  </h1>
+  <div id ="testimonials" class="testimonials">
+    <h1 class="title">
+      testimonials
+    </h1>
 
-  <div class="fluid-container">
-    <div class="row">
-      <div class="col-md-6">
+    <div class="fluid-container">
+      <div class="row">
+        <div class="col-md-6">
 
-        <div class="quote">
-          <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
-          <div class="name"> John Armstrong </div>
-          <div class="company">
-            Thomas Sheridan, Tennet + Brown Architects
+          <div class="quote">
+            <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
+            <div class="name">Thomas Sheridan</div>
+            <div class="company">
+              Tennet + Brown Architects
+            </div>
+            <p class="text">
+              I've been using Revit for 9 years and I would find TendTime
+              incredibly useful - potentially saving me countless hours per year.
+            </p>
           </div>
-          <p class="text">
-            I've been using Revit for 9 years and I would find TendTime
-            incredibly useful - potentially saving me countless hours per year.
-          </p>
+
         </div>
+        <div class="col-md-6">
 
-      </div>
-      <div class="col-md-6">
+          <div class="quote">
+            <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
+            <div class="name">Catherine & Rob Taylor</div>
+            <div class="company">Ngaio residents (Wellington New Zealand)</div>
+            <p class="text">
+              I wish my architect had TendTime before our last build. So much so, that we would have paid for it for him.
+            </p>
+          </div>
 
-        <div class="quote">
-          <%= fa_icon "quote-left 2x", class: 'quote-marks' %>
-          <div class="name"> John Armstrong </div>
-          <div class="company"> Armstrong &amp; Jones Architectural Design </div>
-          <p class="text">
-            Being able to get a sanity check on my designs in real time.
-            right now.
-          </p>
         </div>
-
       </div>
     </div>
   </div>
-</div>
+</div><!-- .white-wrapper -->
 
-<div class="pricing">
+<div id="pricing" class="pricing">
   <div class="fluid-container">
     <div class="row">
       <div class="col-md-6">

@@ -83,8 +83,8 @@
     fileInput.change(function(){
         $this = $(this);
         $('#file-name').text($this.val());
-        $('#file').val('Upload File');
-        $('#file').prop('type', 'submit');
+        $('#file').closest("form").submit();
+        $('#file').val('Uploading...');
     })
 
     $('#file').click(function(){

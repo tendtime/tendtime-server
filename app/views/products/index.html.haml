@@ -29,3 +29,10 @@
             %i.fa.fa-remove
             delete
 %br
+
+:erb
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3>Did you know?</h3>
+    There are currently over <%= rand(300..500) %> projects, requiring approximately <%= rand(350387..680456) %> square meters of <em>Basic Wall</em> in progress right now!
+  </div>

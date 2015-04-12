@@ -58,39 +58,44 @@
     float: left;
     padding: 3em;
     max-width: 50%;
-    margin-bottom: 5em;
+
+    margin-bottom: 20em;
+
+    @media screen and (max-width: 1000px) {
+      margin-bottom: 10em;
+      // outline: 1px solid red;
+    }
 
     @media screen and (max-width: 750px) {
+      margin-bottom: 5em;
       float: none;
       max-width: 100%;
     }
 
-    $grey-light: #ddd;
     .tagline {
       color: $grey-light;
     }
   }
 
-  .how-it-works {
-    background: white;
-    position: relative;
+  .white-wrapper {
+    background: $white;
     clear: both;
+  }
+
+  .how-it-works {
+    position: relative;
     padding: 2em 1em;
-
-
-  //   div {
-  //   outline: 1px solid red;
-  // }
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
 
     .title {
-      margin: 1em 0;
+      margin-top: 0;
     }
 
     .logo {
       max-width: 100px;
+      padding-top: 3px;
     }
 
     .sub-title {
@@ -109,9 +114,8 @@
     margin-right: auto;
     max-width: 800px;
 
-
     .title {
-      margin: 1em 0;
+      margin-top: 0;
     }
 
     .quote {
@@ -176,7 +180,7 @@
     .features {
       padding-top: 50px;
       .feature {
-        font-size: 240%;
+        font-size: 220%;
         padding-top: 0.25em;
         &:before {
           font-family: 'FontAwesome';
