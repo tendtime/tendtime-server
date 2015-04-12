@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
 
   def requirements=(file)
     return if file.nil?
+    #TODO: set revit_file_path
+
     area_grouping =  ->(group, requirement){
       area = requirement[:area]
       r = /^\s*(\d+)/

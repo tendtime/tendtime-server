@@ -4,8 +4,12 @@
   font-weight: bold;
 }
 
+.spacer {
+  clear: both;
+  padding-bottom: 20px
+}
+
 .budget {
-  padding-bottom: 20px;
   .pull-left { width:50%; }
   .pull-right { width: 50%; }
 }

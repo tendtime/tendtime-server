@@ -2,7 +2,9 @@
   = @project.name
 %span.sub-heading= @project.description
 
-.budget
+.spacer
+
+%span.budget
   %span.pull-left
     - if @total_price
       .total
@@ -28,32 +30,35 @@
             = "#{percent_used}%"
             of budget
 
-%table.table
-  %tr
-    %th
-    %th
-    %th Quantity
-    %th Price per unit
-    %th Total cost
-    %th Price updated
-    %th
-  - @project_requirements.each do |family|
+.spacer
+
+- if @project_requirements.present?
+  %table.table
     %tr
-      %th(colspan=7)= family['name']
-    - family['types'].each do |type|
-      %tr{data: {product: type.to_json}}
-        %td(width="5px")
-        %td= type['name']
-        %td= type['quantity']
-        %td= number_to_currency(type['product'].price_per_unit)
-        %td= number_to_currency((type['quantity'].to_i * type['product'].price_per_unit))
-        %td
-          = time_ago_in_words type['product'].updated_at
-          ago
-        %td
-          %a.btn.btn-sm.btn-primary.do-enquire
-            = fa_icon "send"
-            Enquire
+      %th
+      %th
+      %th Quantity
+      %th Price per unit
+      %th Total cost
+      %th Price updated
+      %th
+    - @project_requirements.each do |family|
+      %tr
+        %th(colspan=7)= family['name']
+      - family['types'].each do |type|
+        %tr{data: {product: type.to_json}}
+          %td(width="5px")
+          %td= type['name']
+          %td= type['quantity']
+          %td= number_to_currency(type['product'].price_per_unit)
+          %td= number_to_currency((type['quantity'].to_i * type['product'].price_per_unit))
+          %td
+            = time_ago_in_words type['product'].updated_at
+            ago
+          %td
+            %a.btn.btn-sm.btn-primary.do-enquire
+              = fa_icon "send"
+              Enquire
 
 = form_tag project_path(@project), method: :patch, multipart: true do
   %span.page-heading Import Schedule File:
