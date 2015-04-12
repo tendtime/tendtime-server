@@ -15,3 +15,5 @@
 //= require jquery_ujs
 //= require highcharts
 //= require bootbox.min
+//= require moment
+//= require livestamp.min
