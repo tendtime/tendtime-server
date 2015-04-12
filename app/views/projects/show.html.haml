@@ -1,12 +1,18 @@
+%h1
+  = @project.name
+%span.sub-heading= @project.description
 
-%h1= @project.name
-%div
-  %span.pull-left
-    %span.sub-heading= @project.description
-  %span.pull-right
-    %span.total
-      Total Project Cost:
+.budget
+  - if @total_price
+    .total
+      Current total:
       = number_to_currency(@total_price)
+
+  - if @project.budget
+    .total
+      Budget:
+      = number_to_currency(@project.budget)
+
 %table.table
   %tr
     %th

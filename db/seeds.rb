@@ -15,7 +15,7 @@ steve2 = User.create(email: 'steve@metroglass.co.nz', password: 'password1', rol
 steve3 = User.create(email: 'steve@metalcraft.co.nz', password: 'password1', role: 'supplier', supplier: metal_craft)
 
 #project
-Project.create(name: "John Key's holiday house", description: 'Lake Taupo', user: adam)
+Project.create(name: "John Key's holiday house", description: 'Lake Taupo', budget: 3000000, user: adam)
 
 #products
 Product.create(
