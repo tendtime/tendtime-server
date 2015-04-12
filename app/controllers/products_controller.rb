@@ -27,7 +27,9 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    #TODO: set supplier based on current_user
+    if current_user.supplier.present?
+      @product.supplier = current_user.supplier
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
