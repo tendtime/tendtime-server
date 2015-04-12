@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411213016) do
+ActiveRecord::Schema.define(version: 20150412000620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150411213016) do
     t.datetime "updated_at",      null: false
     t.string   "revit_file_path"
     t.integer  "user_id"
+    t.float    "budget"
   end
 
   create_table "requirements", force: :cascade do |t|

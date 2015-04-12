@@ -1,13 +1,27 @@
+%h1
+  = @project.name
+%span.sub-heading= @project.description
 
-%h1= @project.name
-%div
-  %span.pull-left
-    %span.sub-heading= @project.description
-  %span.pull-right
-    %span.total
-      Total Project Cost:
-      ="$#{@total_price}"
+.budget
+  - if @total_price
+    .total
+      Current total:
+      = number_to_currency(@total_price)
+
+  - if @project.budget
+    .total
+      Budget:
+      = number_to_currency(@project.budget)
+
 %table.table
+  %tr
+    %th
+    %th
+    %th Quantity
+    %th Price per unit
+    %th Total cost
+    %th Price updated
+    %th
   - @project_requirements.each do |family|
     %tr
       %th(colspan=7)= family['name']
@@ -16,21 +30,23 @@
         %td(width="5px")
         %td= type['name']
         %td= type['quantity']
-        %td= type['product'].price_per_unit
-        %td= number_with_precision((type['quantity'].to_i * type['product'].price_per_unit), precision: 2)
-        %td= time_ago_in_words type['product'].updated_at
+        %td= number_to_currency(type['product'].price_per_unit)
+        %td= number_to_currency((type['quantity'].to_i * type['product'].price_per_unit))
+        %td
+          = time_ago_in_words type['product'].updated_at
+          ago
         %td
           %a.btn.btn-sm.btn-primary.do-enquire
-            %i.glyphicon.glyphicon-shopping-cart
+            = fa_icon "send"
+            Enquire
 
 = form_tag project_path(@project), method: :patch, multipart: true do
   %span.page-heading Import Schedule File:
   %br
   %div.wrap
-    %button#file.btn.btn-primary(type="button") Choose File
+    = submit_tag 'Choose File', class: 'btn btn-primary', id: 'file'
     %span#file-name No file chosen
     = file_field_tag 'project[requirements]'
-
 - if @project_requirements.any?
   %div{ id: 'piechart' }
 
@@ -38,18 +54,21 @@
   $(function () {
     var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
     var fileInput = $(':file').wrap(wrapper);
+    $('#file').prop('type', 'button');
+    var uploaded = false;
 
     fileInput.change(function(){
         $this = $(this);
         $('#file-name').text($this.val());
-        $('#file').text('Upload file');
+        $('#file').val('Upload File');
         $('#file').prop('type', 'submit');
-        $this.parent().remove();
-
     })
 
     $('#file').click(function(){
-        $(':file').click();
+        if (!uploaded){
+          fileInput.click();
+          uploaded = true;
+        }
     }).show();
 
 
