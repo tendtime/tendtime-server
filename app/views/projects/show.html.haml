@@ -41,10 +41,9 @@
       %th Price per unit
       %th Total cost
       %th
-      %th
     - @project_requirements.each do |family|
       %tr
-        %th(colspan=7)= family['name']
+        %th(colspan=6)= family['name']
       - family['types'].each do |type|
         %tr{data: {product: type.to_json}}
           %td(width="5px")
@@ -55,9 +54,6 @@
             %br
             %small.text-muted updated <span data-livestamp="#{type['product'].updated_at.to_i}"></span>
           %td= number_to_currency((type['quantity'].to_i * type['product'].price_per_unit))
-          %td
-            = time_ago_in_words type['product'].updated_at
-            ago
           %td
             %a.btn.btn-sm.btn-primary.do-enquire
               = fa_icon "send"
