@@ -1,0 +1,19 @@
+data:
+  image: busybox
+  volumes:
+    - /usr/local/bundle
+postgres:
+  image: postgres:9.4.1
+  ports:
+    - "5432"
+web:
+  build: .
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/app
+  volumes_from:
+    - data
+  ports:
+    - "3000:3000"
+  links:
+    - postgres
