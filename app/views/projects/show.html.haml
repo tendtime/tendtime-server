@@ -3,15 +3,30 @@
 %span.sub-heading= @project.description
 
 .budget
-  - if @total_price
-    .total
-      Current total:
-      = number_to_currency(@total_price)
+  %span.pull-left
+    - if @total_price
+      .total
+        Current total:
+        = number_to_currency(@total_price)
 
-  - if @project.budget
-    .total
-      Budget:
-      = number_to_currency(@project.budget)
+    - if @project.budget
+      .total
+        Budget:
+        = number_to_currency(@project.budget)
+
+  %span.pull-right
+    - if @total_price && @project.budget
+      - percent_used = number_with_precision(@total_price / @project.budget * 100, precision: 2)
+      - if percent_used.to_i <= 100
+        .progress
+          .progress-bar.progress-bar-success{role: "progressbar", 'aria-valuenow': "#{percent_used}", 'aria-valuemin': '0', 'aria-valuemax': '100', style: "width: #{percent_used}%"}
+            = "#{percent_used}%"
+            of budget
+      - else
+        .progress
+          .progress-bar.progress-bar-danger{role: "progressbar", 'aria-valuenow': "#{percent_used}", 'aria-valuemin': '0', 'aria-valuemax': '100', style: "width: #{percent_used}%"}
+            = "#{percent_used}%"
+            of budget
 
 %table.table
   %tr
