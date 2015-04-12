@@ -103,8 +103,8 @@
       var message = "<p>Johny said: " + johnyMessages[Math.floor(Math.random() * johnyMessages.length)] + "</p>" +
         "<p>You are going buy the best " + product.name + " ever made!</p>" +
         "<p>Thank you ! We love you</p>"
-      $trEl.addClass('success');
       $(this).addClass('disabled');
+      $(this).first('a').html('<i class="fa fa-check"></i> Sent')
       bootbox.alert(message);
     })
       $('#piechart').highcharts({
