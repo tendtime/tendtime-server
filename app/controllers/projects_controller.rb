@@ -43,8 +43,9 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     begin
       @project.update(params.require(:project).permit(:requirements))
-    rescue ActionController::ParameterMissing
-      return redirect_to project_path(@project)
+    rescue Exception #ActionController::ParameterMissing
+      flash[:error] = "Sorry, there is something wrong with the file format"
+      # return redirect_to project_path(@project)
     end
 
     redirect_to project_path(@project)
