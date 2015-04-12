@@ -1,5 +1,7 @@
-.sub-heading {
-  font-style: italic;
+.sub-heading { font-style: italic; }
+.page-heading { 
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .spacer {
@@ -18,4 +20,15 @@
   margin-top: 10px;
   font-weight: 500;
   line-height: 1.1;
+}
+
+#file {
+  display: none;
+}
+#file-name {
+  margin-left: 10px;
+}
+
+.wrap {
+  height: 50px;
 }

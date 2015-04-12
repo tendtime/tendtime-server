@@ -2,7 +2,9 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   def requirements=(file)
+    return if file.nil?
     #TODO: set revit_file_path
+
     area_grouping =  ->(group, requirement){
       area = requirement[:area]
       r = /^\s*(\d+)/

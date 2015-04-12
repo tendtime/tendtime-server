@@ -61,14 +61,37 @@
               Enquire
 
 = form_tag project_path(@project), method: :patch, multipart: true do
-  = file_field_tag 'project[requirements]'
-  = submit_tag 'upload'
-
+  %span.page-heading Import Schedule File:
+  %br
+  %div.wrap
+    = submit_tag 'Choose File', class: 'btn btn-primary', id: 'file'
+    %span#file-name No file chosen
+    = file_field_tag 'project[requirements]'
 - if @project_requirements.any?
   %div{ id: 'piechart' }
 
 :javascript
   $(function () {
+    var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
+    var fileInput = $(':file').wrap(wrapper);
+    $('#file').prop('type', 'button');
+    var uploaded = false;
+
+    fileInput.change(function(){
+        $this = $(this);
+        $('#file-name').text($this.val());
+        $('#file').val('Upload File');
+        $('#file').prop('type', 'submit');
+    })
+
+    $('#file').click(function(){
+        if (!uploaded){
+          fileInput.click();
+          uploaded = true;
+        }
+    }).show();
+
+
     $('.do-enquire').click(function(e) {
       e.preventDefault();
       var $trEl = $(this).closest('tr');
